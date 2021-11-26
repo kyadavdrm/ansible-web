@@ -1,0 +1,27 @@
+---
+- name: first play to install package
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: block run
+      block:
+        - name: installaing telnet package
+          yum: name=telnet state=installed
+          register: result
+        - name: print output
+          debug: var=result
+      when: ansible_distribution == "CentOS"
+      ignore_errors: true
+    - name: windows run
+      block:
+        - name: Install IIS (Web-Server and Web-Common-Http)
+          win_feature:
+            name:
+              - Web-Server
+              - Web-Common-Http
+            state: present
+        - name: default-website-index
+          win_copy:
+            dest: "C:\\inetpub\\wwwroot\\index.html"
+            content: "Welcome to the windows instance. This server is configured through Ansible!"
+      when: ansible_os_family == "Windows"
