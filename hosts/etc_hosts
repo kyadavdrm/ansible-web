@@ -1,0 +1,9 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.244.130 ansible-slave host02
+192.168.244.129 host01
+3.89.66.56 ubuntu
+15.206.122.168 Amazon-Server-1
+65.0.182.20 Amazon-Server-2
+192.168.244.128 window
+172.31.43.229 window2 

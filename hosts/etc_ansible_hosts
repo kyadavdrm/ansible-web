@@ -1,0 +1,78 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+## green.example.com
+## blue.example.com
+## 192.168.100.1
+## 192.168.100.10
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+## [webservers]
+## alpha.example.org
+## beta.example.org
+## 192.168.1.100
+## 192.168.1.110
+
+# If you have multiple hosts following a pattern you can specify
+# them like this:
+
+## www[001:006].example.com
+
+# Ex 3: A collection of database servers in the 'dbservers' group
+
+## [dbservers]
+## 
+## db01.intranet.mydomain.net
+## db02.intranet.mydomain.net
+## 10.25.1.56
+## 10.25.1.57
+
+# Here's another example of host ranges, this time there are no
+# leading 0s:
+
+## db-[99:101]-node.example.com
+#ansible-slave ansible_user=admin
+host02 ansible_user=admin
+#host03 ansible_user=root ansible_password=Tech@2020
+host01 ansible_user=root ansible_password=root123
+
+
+[onprem]
+host01
+host02
+
+[cloud]
+#amazon-linux ansible_user=root ansible_password=Tech@2020
+#ubuntu ansible_user=root ansible_password=Tech@2020
+Amazon-Server-1 ansible_user=root ansible_password=Tech@2020
+Amazon-Server-2 ansible_user=root ansible_password=Tech@2020
+
+[win]
+#192.168.244.128
+13.126.194.246
+[win2]
+192.168.244.128
+[win:vars]
+ansible_user=Administrator
+ansible_password="zO8U@GY6?0RK&F0nbf=OqFJdq1nlW8ps"
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+[win2:vars]
+ansible_user=Admin
+ansible_password="123"
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
